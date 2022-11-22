@@ -10771,5 +10771,21 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+#myCarousel .carousel-item img {
+  object-fit: cover;
+  object-position: center;
+  height: 90vh;
+  overflow: hidden;
+}
+
+#myCarousel .carousel-item:before {
+  content: "";
+  background-image: linear-gradient(to bottom, transparent, rgb(0, 0, 0));
+  display: block;
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+}
 
 /*# sourceMappingURL=styles.css.map */
