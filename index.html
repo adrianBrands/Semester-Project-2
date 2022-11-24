@@ -56,7 +56,7 @@
               </a>
               <ul class="dropdown-menu text-small shadow">
                 <li><a class="dropdown-item" href="#">Create listing</a></li>
-                <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+                <li><a class="dropdown-item" href="/profile.html">Profile</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="#">Sign out</a></li>
               </ul>
@@ -79,11 +79,11 @@
           <div class="modal-body">
             <h2 class="fs-5">Let the bidding begin!</h2>
             <div class="form-floating mb-3">
-              <input required type="email" class="form-control" id="loginEmail" name="email" placeholder="name@example.com"/>
+              <input required pattern="^[\w\-.]+@(stud.)?noroff.no$" type="email" title="must not contain punctuation symbols apart from underscore (_)" class="form-control" id="loginEmail" name="email" placeholder="name@example.com"/>
               <label for="loginEmail">Email address</label>
             </div>
             <div class="form-floating mb-3">
-              <input required type="password" class="form-control" id="loginPassword" name="password" placeholder="password"/>
+              <input required minlength="8" type="password" class="form-control" id="loginPassword" name="password" placeholder="password"/>
               <label for="loginPassword">password</label>
             </div>
           </div>
@@ -104,15 +104,15 @@
           <div class="modal-body">
             <h2 class="fs-5">Create account and start your bidding journey</h2>
             <div class="form-floating mb-3">
-              <input required type="text" class="form-control" id="signUp-name" name="name" placeholder="username"/>
+              <input required pattern="^[\w]+$" type="text" title="must not contain punctuation symbols apart from underscore (_)" class="form-control" id="signUp-name" name="name" placeholder="username"/>
               <label for="signUpUserName">Username</label>
             </div>
             <div class="form-floating mb-3">
-              <input required type="email" class="form-control" id="signUp-email" name="email" placeholder="name@noroff.no"/>
+              <input required pattern="^[\w\-.]+@(stud.)?noroff.no$" type="email" title="A user with a stud.noroff.no email may and noroff.no can register" class="form-control" id="signUp-email" name="email" placeholder="name@noroff.no"/>
               <label for="signUpEmail">Email address</label>
             </div>
             <div class="form-floating mb-3">
-              <input required type="password" class="form-control" id="signUp-password" name="password" placeholder="password"/>
+              <input required minlength="8" type="password" class="form-control" id="signUp-password" name="password" placeholder="password"/>
               <label for="signUpPassword">Password</label>
             </div>
             <div class="form-floating mb-3">
