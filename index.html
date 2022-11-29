@@ -52,41 +52,42 @@
             <input class="form-control me-1" type="search" placeholder="Search" aria-label="Search">
           </form>
           <div class="d-flex text-end">
-            <div class="dropdown me-3">
+            <div class="dropdown me-3" id="profile-dropDown">
               <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                 <img src="/images/man-g39c34cdac_640.jpg" alt="mdo" width="40" height="40" class="rounded-circle">
               </a>
-              <ul class="dropdown-menu text-small shadow">
+              <ul class="dropdown-menu dropdown-menu-lg-end text-small shadow">
                 <li><a class="dropdown-item" href="#">Create listing</a></li>
                 <li><a class="dropdown-item" href="/profile.html">Profile</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Sign out</a></li>
+                <li><a class="dropdown-item" id="sign-out">Sign out</a></li>
               </ul>
             </div>
-            <button type="button" class="btn btn-outline-dark me-2" data-bs-toggle="modal" data-bs-target="#login-modal">Login</button>
-            <button type="button" class="btn btn-outline-dark me-5" data-bs-toggle="modal" data-bs-target="#signUp-modal">Sign Up</button>
+            <button type="button" class="btn btn-outline-dark me-2" id="signIn" data-bs-toggle="modal" data-bs-target="#signIn-modal">sign In</button>
+            <button type="button" class="btn btn-outline-dark me-5" id="signUp" data-bs-toggle="modal" data-bs-target="#signUp-modal">Sign Up</button>
           </div>
         </div>
       </div>
     </nav>
   </header>
   <main>
-    <div class="modal fade" id="login-modal" tabindex="-1" aria-labelledby="login-modal-label" aria-hidden="true">
+    <div class="modal fade" id="signIn-modal" tabindex="-1" aria-labelledby="signIn-modal-label" aria-hidden="true">
       <div class="modal-dialog">
-        <form class="modal-content" id="login-form">
-          <div class="modal-header">
-            <h1 class="modal-title fs-3" id="login-modal">Welcome back</h1>
+        <form class="modal-content" id="signIn-form">
+          <div class="modal-header d-flex">
+            <h1 class="modal-title fs-3" id="signIn-modal">Welcome back</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
             <h2 class="fs-5">Let the bidding begin!</h2>
+            <p class="error-message-signIn text-danger"></p>
             <div class="form-floating mb-3">
-              <input required pattern="^[\w\-.]+@(stud.)?noroff.no$" type="email" title="must not contain punctuation symbols apart from underscore (_)" class="form-control" id="loginEmail" name="email" placeholder="name@example.com"/>
-              <label for="loginEmail">Email address</label>
+              <input required pattern="^[\w\-.]+@(stud.)?noroff.no$" type="email" title="must not contain punctuation symbols apart from underscore (_)" class="form-control" id="signInEmail" name="email" placeholder="name@example.com"/>
+              <label for="signInEmail">Email address</label>
             </div>
             <div class="form-floating mb-3">
-              <input required minlength="8" type="password" class="form-control" id="loginPassword" name="password" placeholder="password"/>
-              <label for="loginPassword">password</label>
+              <input required minlength="8" type="password" class="form-control" id="signInPassword" name="password" placeholder="password"/>
+              <label for="signInPassword">password</label>
             </div>
           </div>
           <div class="modal-footer">
@@ -105,6 +106,7 @@
           </div>
           <div class="modal-body">
             <h2 class="fs-5">Create account and start your bidding journey</h2>
+            <p class="error-message-signUp text-danger"></p>
             <div class="form-floating mb-3">
               <input required pattern="^[\w]+$" type="text" title="must not contain punctuation symbols apart from underscore (_)" class="form-control" id="signUp-name" name="name" placeholder="username"/>
               <label for="signUpUserName">Username</label>
