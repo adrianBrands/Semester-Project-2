@@ -2,6 +2,7 @@ import { baseURL } from "../url.js"
 
 const registerPath = "auth/register";
 const method = "post";
+const errorMessage = document.querySelector(".error-message-signUp");
 
 export async function registerUser(user){
   const registerUrl = baseURL + registerPath;
@@ -15,7 +16,14 @@ export async function registerUser(user){
     body
   })
 
-  const result = await response.json();
-  console.log(result);
+  if(response.ok){
+    await response.json();
+    
+    
+  } else {
+    errorMessage.innerHTML = "Ups.. Profile already exists, please try again";
+    document.getElementById("signUp-form").reset();
+  }
+  
 
 }
