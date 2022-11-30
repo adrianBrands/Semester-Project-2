@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
   <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js" defer></script>
   <script src="/src/js/index.js" defer type="module"></script>
+  <script src="/src/js/profile/profile.js" defer type="module"></script>
   <title>auctiō | profile</title>
 </head>
 <body class="min-vh-100 d-flex flex-column">
@@ -62,6 +63,8 @@
                 <li><a class="dropdown-item"  id="sign-out">Sign out</a></li>
               </ul>
             </div>
+            <button type="button" class="btn btn-outline-dark me-2" id="signInButton" data-bs-toggle="modal" data-bs-target="#signIn-modal">sign In</button>
+            <button type="button" class="btn btn-outline-dark me-5" id="signUpButton" data-bs-toggle="modal" data-bs-target="#signUp-modal">Sign Up</button>
           </div>
         </div>
       </div>
@@ -130,7 +133,7 @@
           <img src="/images/man-g39c34cdac_640.jpg" class="mx-auto d-block bd-placeholder-img rounded-circle img-fluid" width="180"  alt="default avatar image of a painted man">
         </div>
         <div class="col-lg-3 remeber...text-center mt-3">
-          <h1 class="fs-3">Username...</h1>
+          <h1 class="fs-3" id="user-name">Username...</h1>
           <h2 class="fs-5 mt-3">Current listings: 5</h2>
           <h3 class="fs-5 mt-3">Credits: 1000</h3>
         </div>

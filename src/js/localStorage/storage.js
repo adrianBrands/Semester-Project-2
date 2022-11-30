@@ -14,3 +14,10 @@ export const get = (key) =>  {
 export const remove = (key) => {
   localStorage.removeItem(key); 
 };
+
+
+export const userInfo = () => {
+  const userStorage = localStorage.getItem("userStorage");
+  const parseUserObj = JSON.parse(userStorage);
+  return {name:userName, email:userEmail, credits:userCredits, avatar:userAvatar } = parseUserObj;
+};
