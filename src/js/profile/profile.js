@@ -1,22 +1,23 @@
-//import { userInfo } from "../localStorage/storage.js"
+import { userInfo } from "../localStorage/storage.js"
 
-//const userName = document.getElementById("user-name")
+const userInfoFunction = userInfo()
+const userDiv = document.querySelector(".userInfo");
 
-//userName.innerHTML = `${userInfo(userName)}`;
+const userName = document.createElement("h1");
+userName.classList = "fs-3"
+userName.innerText = `${userInfoFunction.userName}`;
+userDiv.appendChild(userName);
+
+const currentListings = document.createElement("h2");
+currentListings.classList = "fs-5 mt-3";
+currentListings.innerText = `Current listings: ...`;
+userDiv.appendChild(currentListings);
+
+const userCredits = document.createElement("h3");
+userCredits.classList = "fs-5 mt-3";
+userCredits.innerText = `${userInfoFunction.userCredits}`;
+userDiv.appendChild(userCredits);
 
 
-const test = {}
 
-export const userInfo = (user) => {
-  const userStorage = localStorage.getItem("userStorage");
-  const parseUserObj = JSON.parse(userStorage);
-  const {name:userName, email:userEmail, credits:userCredits, avatar:userAvatar } = parseUserObj;
-  console.log(userCredits)
-  return user = [userName, userEmail, userCredits];
- 
-};
-
-const check = userInfo().filter(test => test.length) 
-
-console.log(check)
 
