@@ -18,9 +18,13 @@ export const remove = (key) => {
 
 export const userInfo = () => {
   const userStorage = localStorage.getItem("userStorage");
-  const parseUserObj = JSON.parse(userStorage);
-  const {name:userName, email:userEmail, credits:userCredits, avatar:userAvatar } = parseUserObj;
-  console.log(userCredits)
-  return {userName, userEmail, userCredits};
+  if(userStorage){
+    const parseUserObj = JSON.parse(userStorage);
+    const {name:userName, email:userEmail, credits:userCredits, avatar:userAvatar } = parseUserObj;
+    return {userName, userEmail, userCredits, userAvatar};
+  } else {
+    return false
+  }
+  
  
 };

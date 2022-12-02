@@ -10,6 +10,8 @@
   <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js" defer></script>
   <script src="/src/js/index.js" defer type="module"></script>
   <script src="/src/js/profile/profile.js" defer type="module"></script>
+  <script src="/src/js/api/profile/updateAvatar.js" defer type="module"></script>
+  <script src="/src/js/api/token/fetchWithToken.js" defer type="module"></script>
   <title>auctiō | profile</title>
 </head>
 <body class="min-vh-100 d-flex flex-column">
@@ -109,15 +111,15 @@
 
     <div class="modal fade" id="avatar-modal" tabindex="-1" aria-labelledby="avatar-modal-label" aria-hidden="true">
       <div class="modal-dialog">
-        <form class="modal-content" id="login-form">
+        <form class="modal-content" id="avatar-image">
           <div class="modal-header">
-            <h1 class="modal-title fs-3">Change profile image</h1>
+            <h1 class="modal-title fs-3">Change user image</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
             <div class="form-floating mb-3">
-              <input required type="url" class="form-control" id="image-avatar" name="image" placeholder="avatar image URL"/>
-              <label for="avatarImage">Profile image</label>
+              <input required type="url" class="form-control avatar-input" name="avatar" placeholder="avatar image URL"/>
+              <label for="avatarImage">User image</label>
             </div>
           </div>
           <div class="modal-footer">
@@ -129,8 +131,8 @@
 
     <div class="container mt-3">
       <div class="row">
-        <div class="col-lg-2">
-          <img src="/images/man-g39c34cdac_640.jpg" class="mx-auto d-block bd-placeholder-img rounded-circle img-fluid" width="180"  alt="default avatar image of a painted man">
+        <div class="col-lg-2 userImage">
+          <!--<img src="/images/man-g39c34cdac_640.jpg" class="mx-auto d-block bd-placeholder-img rounded-circle img-fluid" width="180"  alt="default avatar image of a painted man">-->
         </div>
         <div class="col-lg-3 text-center mt-3 userInfo">
           <!--<h1 class="fs-3" id="user-name">Username...</h1>
@@ -141,7 +143,7 @@
         <div class="col-lg-4 d-flex justify-content-center align-items-center">
           <div class="text-center">
             <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#createListing-modal">Create listing</button>
-            <button class="btn btn-primary d-block mt-3" data-bs-toggle="modal" data-bs-target="#avatar-modal">Change Profile Image</button>
+            <button class="btn btn-primary d-block mt-3" data-bs-toggle="modal" data-bs-target="#avatar-modal">Change User Image</button>
           </div>
         </div>
       </div>

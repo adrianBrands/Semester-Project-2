@@ -15,7 +15,7 @@ export async function signInUser(user){
     },
     method,
     body
-  })
+  });
   
   if (response.ok){
     const { accessToken, ...userData } = await response.json();
@@ -26,7 +26,7 @@ export async function signInUser(user){
       window.location.reload(true);
     }, 1000);
 
-  }else {
+  } else {
     errorMessage.innerHTML = "Wrong email or password, please try again";
     document.getElementById("signIn-form").reset();
   }
