@@ -1,8 +1,4 @@
-import { userInfo } from "../../localStorage/storage.js";
 import { updateAvatar } from "../../api/profile/updateAvatar.js";
-
-const avatarInput = document.querySelector(".avatar-input");
-const storedUser = userInfo();
 
 export function changeAvatarImage() {
   const avatarForm = document.querySelector("#avatar-image");

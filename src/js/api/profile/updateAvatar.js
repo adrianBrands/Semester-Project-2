@@ -5,7 +5,6 @@ import * as storage from "../../localStorage/storage.js"
 
 const userName = userInfo();
 
-
 const avatarPath = `profiles/${userName.userName}/media`;
 const method = "put";
 
@@ -19,12 +18,16 @@ export async function updateAvatar(avatar){
 
   if (response.ok){
     function update(){
-      const existing = storage.get("userStorage")
-      existing.avatar = avatar.avatar;
-      localStorage.setItem("userStorage", JSON.stringify(existing));
-
+      const existingAvatar = storage.get("userStorage")
+      existingAvatar.avatar = avatar.avatar;
+      localStorage.setItem("userStorage", JSON.stringify(existingAvatar));
     }
-    update()
+    
+    update();
+
+    setTimeout(() => {
+      window.location.reload(true);
+    }, 1000);
    
   } else {
     console.log(response);
