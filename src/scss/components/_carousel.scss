@@ -5,6 +5,13 @@
   overflow: hidden;
 }
 
+.carousel-inner .carousel-item img {
+  object-fit: cover;
+  object-position: center;
+  height: 70vh;
+  overflow: hidden;
+}
+
 #myCarousel .carousel-item:before{
   content:"";
   background-image: 

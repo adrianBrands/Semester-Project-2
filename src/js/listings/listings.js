@@ -12,7 +12,7 @@ function listings(listingData) {
   col.className = "col";
 
   const listingIDLink = document.createElement("a");
-  listingIDLink.setAttribute("href", `listing.html?=${listingData.id}`);
+  listingIDLink.setAttribute("href", `listing.html?id=${listingData.id}`);
   listingIDLink.style.textDecoration = "none";
   col.append(listingIDLink);
   

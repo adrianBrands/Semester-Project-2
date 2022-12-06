@@ -10783,6 +10783,13 @@ textarea.form-control-lg {
   overflow: hidden;
 }
 
+.carousel-inner .carousel-item img {
+  object-fit: cover;
+  object-position: center;
+  height: 70vh;
+  overflow: hidden;
+}
+
 #myCarousel .carousel-item:before {
   content: "";
   background-image: linear-gradient(to bottom, transparent, rgb(0, 0, 0));
