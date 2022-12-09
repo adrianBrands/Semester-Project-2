@@ -22,17 +22,21 @@ function listings(listingData) {
 
   const listingImage = document.createElement("img");
   listingImage.setAttribute("src", listingData.media[0]);
+  
+  if(!listingData.media.length){
+    listingImage.setAttribute("src", "images/pexels-dima-valkov-3266703.jpg");
+    console.log(listingData.media);
+  }
+
   listingImage.setAttribute("alt", "listing image");
+  listingImage.setAttribute("onerror", "this.onerror=null;this.src='/images/pexels-andrew-neel-2123337.jpg'");
   listingImage.className = "card-img-top";
   listingImage.style.width = "100%";
   listingImage.style.height = "40vh";
   listingImage.style.objectFit = "cover"
+  listingsCard.append(listingImage);
+ 
   
-  console.log(listingData);
-  if(listingData.media.length !== 0){
-    //console.log(listingData.media);
-    listingsCard.append(listingImage);
-  }
   //listingsCard.append(listingImage);
 
   const cardBody = document.createElement("div");
