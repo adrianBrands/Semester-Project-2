@@ -1,11 +1,6 @@
 import { listingsAPI } from "../api/listings/listings.js";
+import { date } from "./listingsEndDate.js";
 
-function testest(listingData) {
-  const date = new Date (listingData.endsAt);
-  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-  return date.toLocaleDateString("en-GB", options)
-
-}
 
 function listings(listingData) {
   const col = document.createElement("div");
@@ -73,7 +68,7 @@ function listings(listingData) {
 
   const cardFooterContent = document.createElement("small");
   cardFooterContent.className = "text-muted"; 
-  cardFooterContent.innerText = "Ends at " +  testest(listingData) ;
+  cardFooterContent.innerText = "Ends at " +  date(listingData) ;
   cardFooter.append(cardFooterContent);
 
   

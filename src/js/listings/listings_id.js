@@ -1,6 +1,6 @@
 import { listingIdAPI } from "../api/listings/listing_id.js";
 import { userInfo } from "../localStorage/storage.js"
-
+//import { countDown } from "./listingsEndDate.js";
 
 function listingImage(listingData, container){
   const listing = listingData.media.map((media) => media);
@@ -40,7 +40,13 @@ function listingContent(listingData, container){
 
   const listingOwnerImage = document.createElement("img");
   listingOwnerImage.className = "rounded-circle";
-  listingOwnerImage.setAttribute("src", listingData.seller.avatar);
+
+  if(!listingData.seller.avatar.length){
+    listingOwnerImage.setAttribute("src", "/images/man-g39c34cdac_640.jpg");
+  } else if(listingData.seller.avatar.length) {
+    listingOwnerImage.setAttribute("src", listingData.seller.avatar);
+  }
+  
   listingOwnerImage.setAttribute("width", "50");
   listingOwnerImage.setAttribute("height", "50");
   listingOwnerImage.setAttribute("alt", "user avatar image");
@@ -58,23 +64,28 @@ function listingContent(listingData, container){
   function getHighestBid(bid){
     return bid.amount - 1;
   }
-  const highestBid = bids.findLast(getHighestBid)
+  const highestBid = bids.findLast(getHighestBid);
 
-  /*const listingss = listing.bids;
-  function getHighestBid(bid){
-    return bid.amount - 1;
-  }
-  const highestBid = listingss.findLast(getHighestBid)
-
-  console.log(highestBid.amount)*/
   
   const listingBid = document.createElement("p");
   listingBid.classList.add("mb-1", "mt-5");
-  listingBid.innerText = `Current bid: $${highestBid.amount}`
+
+  if(highestBid){
+    listingBid.innerText = `Current bid: $${highestBid.amount}`
+  }
+  
 
   const totalBids = document.createElement("p");
   totalBids.className = "border-bottom";
-  totalBids.innerText = `${listingData._count.bids} bids`;
+
+  if(listingData._count.bids === 1){
+    totalBids.innerText = `${listingData._count.bids} bid`;
+  } else if(listingData._count.bids > 1){
+    totalBids.innerText = `${listingData._count.bids} bids`;
+  } else if(listingData._count.bids === 0){
+    totalBids.innerText = `${listingData._count.bids} bids`;
+  }
+  
 
   const bidForm = document.createElement("form");
   bidForm.className = "mt-5";
@@ -123,6 +134,14 @@ async function testListing() {
   listingImage(listing, container);
   listingTitle(listing, titleContainer);
   listingContent(listing, contentContainer);
+
+  const countDown = setInterval(function() {
+    const enDate = listing.endsAt;
+    console.log(enDate)
+  
+  }, 1000);
+  
+  
 }
 
 testListing()
