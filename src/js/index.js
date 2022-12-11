@@ -6,6 +6,7 @@ import { isLoggedIn } from "./profile/loggedIn.js";
 
 import { changeAvatarImage } from "./listeners/Profile/avatar.js";
 import { userProfile } from "./profile/profile.js";
+import { userProfileImage } from "./profile/profile.js";
 
 if (location.pathname === "/index.html"){
   signUpFormListener();
@@ -19,5 +20,5 @@ if(location.pathname === "/profile.html"){
 
 signOutUser();
 isLoggedIn();
-
+userProfileImage()
 
