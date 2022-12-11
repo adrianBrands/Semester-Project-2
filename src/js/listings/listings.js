@@ -1,11 +1,11 @@
 import { listingsAPI } from "../api/listings/listings.js";
-import { date } from "./listingsEndDate.js";
+import { endDate } from "./listingsEndDate.js";
 
 
 function listings(listingData) {
   const col = document.createElement("div");
   col.className = "col";
-
+  
   const listingIDLink = document.createElement("a");
   listingIDLink.setAttribute("href", `listing.html?id=${listingData.id}`);
   listingIDLink.style.textDecoration = "none";
@@ -68,7 +68,7 @@ function listings(listingData) {
 
   const cardFooterContent = document.createElement("small");
   cardFooterContent.className = "text-muted"; 
-  cardFooterContent.innerText = "Ends at " +  date(listingData) ;
+  cardFooterContent.innerText = "Ends at " +  endDate(listingData) ;
   cardFooter.append(cardFooterContent);
 
   

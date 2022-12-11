@@ -1,6 +1,7 @@
 import { listingIdAPI } from "../api/listings/listing_id.js";
 import { userInfo } from "../localStorage/storage.js"
 //import { countDown } from "./listingsEndDate.js";
+import { endDate } from "./listingsEndDate.js";
 
 function listingImage(listingData, container){
   const listing = listingData.media.map((media) => media);
@@ -19,7 +20,7 @@ function listingImage(listingData, container){
     carouselImage.classList.add("d-block", "w-100");
     
     carouselItem.append(carouselImage);
-    container.append(carouselItem)
+    container.append(carouselItem);
   });
 }
 
@@ -50,10 +51,9 @@ function listingContent(listingData, container){
   listingOwnerImage.setAttribute("width", "50");
   listingOwnerImage.setAttribute("height", "50");
   listingOwnerImage.setAttribute("alt", "user avatar image");
-
+  
   listingOwnerContent.append(listingOwnerName, listingOwnerImage);
   
-
   const listingContent = document.createElement("div");
   listingContent.className = "mt-3";
 
@@ -109,11 +109,15 @@ function listingContent(listingData, container){
   button.id = "button-addon2";
   button.innerText = "button";
 
+  const date = document.createElement("p");
+  date.innerText = `Ends at ${endDate(listingData)}`
+  date.classList.add("mt-2", "border-bottom");
+
   inputGroup.append(inputGroupText, input, button);
 
-  bidForm.append(label, inputGroup)
+  bidForm.append(label, inputGroup);
 
-  listingContent.append(listingDescription, listingBid, totalBids, bidForm)
+  listingContent.append(listingDescription, listingBid, totalBids, bidForm, date)
 
   container.append(listingOwnerContent, listingContent);
 
@@ -134,13 +138,6 @@ async function testListing() {
   listingImage(listing, container);
   listingTitle(listing, titleContainer);
   listingContent(listing, contentContainer);
-
-  const countDown = setInterval(function() {
-    const enDate = listing.endsAt;
-    console.log(enDate)
-  
-  }, 1000);
-  
   
 }
 
