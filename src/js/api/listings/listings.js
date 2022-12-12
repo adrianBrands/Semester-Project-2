@@ -1,7 +1,8 @@
 import { baseURL } from "../url.js";
 import { fetchWithToken } from "../token/fetchWithToken.js";
 
-const listingPath = `listings/?_seller=true&_bids=true&_active=true`;
+const listingPath = `listings/?_seller=true&_bids=true&_active=true&sort=created&sortOrder=desc`;
+
 
 export async function listingsAPI() {
   const listingsURL = `${baseURL}${listingPath}`;
