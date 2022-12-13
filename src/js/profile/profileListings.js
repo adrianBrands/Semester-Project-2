@@ -1,11 +1,12 @@
 import { listingsAPI } from "../api/listings/listings.js";
-import { endDate } from "./listingsEndDate.js";
-import { carousel } from "./listingsCarouselHomePage.js";
+import { endDate } from "../listings/listingsEndDate.js";
+import { userInfo } from "../localStorage/storage.js";
 
-function listings(listingData) {
+
+function displayUserListings(listingData) {
   const col = document.createElement("div");
   col.className = "col";
-  
+
   const listingIDLink = document.createElement("a");
   listingIDLink.setAttribute("href", `listing.html?id=${listingData.id}`);
   listingIDLink.style.textDecoration = "none";
@@ -20,7 +21,6 @@ function listings(listingData) {
   
   if(!listingData.media.length){
     listingImage.setAttribute("src", "images/pexels-dima-valkov-3266703.jpg");
-    
   }
 
   listingImage.setAttribute("alt", "listing image");
@@ -73,25 +73,39 @@ function listings(listingData) {
 
   
 
-  
-    return col
+    //if(listingData.seller.name === userInfo().userName){
+      return col
+    //}
+    
   
 
 }
 
 function allListings(listingData, parent){
-  const listingElements = listingData.map(listings);
-  parent.append(...listingElements);
-
+  
+    
+    
+    const listingElements = listingData.map(displayUserListings);
+    parent.append(...listingElements);
+    
+    
+  
 }
+    
+
+  
+  
+
+
 
 async function testListings() {
   const listings = await listingsAPI();
-  const container = document.querySelector(".listings");
-  allListings(listings, container);
-  //console.log(listings)
-  //carousel(listings)
+  const container = document.querySelector(".userListings");
+  //allListings(listings, container);
+  const listingElements = listings.map(displayUserListings);
+  
+
+  
 }
 
-testListings()
-
+testListings();

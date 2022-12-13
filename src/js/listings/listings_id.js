@@ -42,7 +42,7 @@ function listingContent(listingData, container){
   const listingOwnerImage = document.createElement("img");
   listingOwnerImage.className = "rounded-circle";
 
-  if(!listingData.seller.avatar.length){
+  if(!listingData.seller.avatar){
     listingOwnerImage.setAttribute("src", "/images/man-g39c34cdac_640.jpg");
   } else if(listingData.seller.avatar.length) {
     listingOwnerImage.setAttribute("src", listingData.seller.avatar);
@@ -60,18 +60,17 @@ function listingContent(listingData, container){
   const listingDescription = document.createElement("p");
   listingDescription.innerText = listingData.description;
 
-  const bids = listingData.bids;
-  function getHighestBid(bid){
-    return bid.amount - 1;
-  }
-  const highestBid = bids.findLast(getHighestBid);
-
+ 
+  console.log(listingData.bids)
   
   const listingBid = document.createElement("p");
   listingBid.classList.add("mb-1", "mt-5");
 
-  if(highestBid){
-    listingBid.innerText = `Current bid: $${highestBid.amount}`
+  if(listingData.bids.length){
+    const highestBid = listingData.bids.sort((a, b) => b.amount - a.amount);
+    listingBid.innerText = `Current highest bid: $${highestBid[0].amount}`
+  } else if(!listingData.bids.length){
+    listingBid.innerText = `No bids on this listing`
   }
   
 
@@ -92,7 +91,7 @@ function listingContent(listingData, container){
   
   const label = document.createElement("label");
   label.className = "form-label";
-  label.innerText = `Your Current Credit: $${userInfo().userCredits}`;
+  label.innerText = `Your Credits: $${userInfo().userCredits}`;
   
   const inputGroup = document.createElement("div");
   inputGroup.className = "input-group";
@@ -138,6 +137,9 @@ async function testListing() {
   listingImage(listing, container);
   listingTitle(listing, titleContainer);
   listingContent(listing, contentContainer);
+
+  
+
   
 }
 

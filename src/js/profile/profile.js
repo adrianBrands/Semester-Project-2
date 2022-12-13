@@ -38,3 +38,5 @@ export function userProfileImage(){
 
   userImageContainer.append(userImage);
 }
+
+
