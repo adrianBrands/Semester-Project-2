@@ -25,6 +25,10 @@ export function carousel(listingData, container) {
       );
     } else if (test[i].media.length) {
       carouselImage.setAttribute("src", test[i].media[0]);
+      carouselImage.setAttribute(
+        "onerror",
+        "this.onerror=null;this.src='/images/pexels-dima-valkov-3266703.jpg'"
+      );
     }
 
     carouselImage.classList.add("d-block", "w-100");

@@ -3,25 +3,68 @@ import { userInfo } from "../localStorage/storage.js";
 import { endDate } from "./listingsEndDate.js";
 import { sortFromHighestBid } from "./listingsBidsSort.js";
 
+// CHECK IF IMAGE EXISTS
+function checkIfImageExists(url, callback) {
+  const img = new Image();
+  img.src = url;
+  
+  if (img.complete) {
+    callback(true);
+  } else {
+    img.onload = () => {
+      callback(true);
+    };
+    
+    img.onerror = () => {
+      callback(false);
+    };
+  }
+}
+
+
+
+
+
 function listingImage(listingData, container) {
   const listing = listingData.media.map((media) => media);
+ 
 
-  listing.forEach(function (element, index) {
+  checkIfImageExists(listing[0], (exists) => {
+  if (exists) {
+    console.log('Image exists. ')
+    listing.forEach(function (element, index) {
+      const carouselItem = document.createElement("div");
+      
+      if (index === 0) {
+        carouselItem.classList.add("carousel-item", "active");
+      } else if (index !== 0) {
+        carouselItem.classList.add("carousel-item");
+      }
+      const carouselImage = document.createElement("img");
+      carouselImage.setAttribute("src", element);
+      carouselImage.classList.add("d-block", "w-100");
+      
+      carouselItem.append(carouselImage);
+      container.append(carouselItem);
+    });
+  } else {
+    console.error('Image does not exists.')
     const carouselItem = document.createElement("div");
-    console.log(element);
-    if (index === 0) {
-      carouselItem.classList.add("carousel-item", "active");
-    } else if (index !== 0) {
-      carouselItem.classList.add("carousel-item");
-    }
-
+    carouselItem.classList.add("carousel-item", "active");
+    
     const carouselImage = document.createElement("img");
-    carouselImage.setAttribute("src", element);
     carouselImage.classList.add("d-block", "w-100");
-
+    carouselImage.setAttribute(
+      "src",
+      "images/pexels-dima-valkov-3266703.jpg"
+    );
+    
     carouselItem.append(carouselImage);
     container.append(carouselItem);
-  });
+  }
+});
+  
+ 
 }
 
 function listingTitle(listingData, container) {

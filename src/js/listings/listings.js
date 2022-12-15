@@ -25,7 +25,7 @@ function listings(listingData) {
   listingImage.setAttribute("alt", "listing image");
   listingImage.setAttribute(
     "onerror",
-    "this.onerror=null;this.src='/images/pexels-andrew-neel-2123337.jpg'"
+    "this.onerror=null;this.src='/images/pexels-dima-valkov-3266703.jpg'"
   );
   listingImage.className = "card-img-top";
   listingImage.style.width = "100%";

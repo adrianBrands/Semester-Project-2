@@ -24,7 +24,7 @@ export async function signInUser(user){
 
     setTimeout(() => {
       window.location.reload(true);
-    }, 1000);
+    }, 2000);
 
   } else {
     errorMessage.innerHTML = "Wrong email or password, please try again";

@@ -19,9 +19,12 @@ export function signUpFormListener() {
     }
 
     setTimeout(() => {
-      console.log(userValue)
       signInUser(signInNewUser);
     }, 2000);
+
+    /*setTimeout(() => {
+      window.location.reload(true);
+    }, 2000);*/
 
   });
 

@@ -4,6 +4,10 @@
   border-color: #911e1e;
 }
 
+.noListingsYet {
+  display: none;
+}
+
 /*!
  * Bootstrap  v5.2.2 (https://getbootstrap.com/)
  * Copyright 2011-2022 The Bootstrap Authors

@@ -44,6 +44,10 @@ function createFormListener() {
       }*/
 
       postListing(listing);
+
+      setTimeout(() => {
+        window.location.reload(true);
+      }, 1500);
     });
   }
 }
