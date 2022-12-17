@@ -2,69 +2,45 @@ import { listingIdAPI } from "../api/listings/listing_id.js";
 import { userInfo } from "../localStorage/storage.js";
 import { endDate } from "./listingsEndDate.js";
 import { sortFromHighestBid } from "./listingsBidsSort.js";
-
-// CHECK IF IMAGE EXISTS
-function checkIfImageExists(url, callback) {
-  const img = new Image();
-  img.src = url;
-  
-  if (img.complete) {
-    callback(true);
-  } else {
-    img.onload = () => {
-      callback(true);
-    };
-    
-    img.onerror = () => {
-      callback(false);
-    };
-  }
-}
-
-
-
-
+import { checkIfImageExists } from "./listingsImageCheck.js";
 
 function listingImage(listingData, container) {
   const listing = listingData.media.map((media) => media);
- 
 
   checkIfImageExists(listing[0], (exists) => {
-  if (exists) {
-    console.log('Image exists. ')
-    listing.forEach(function (element, index) {
+    if (exists) {
+      console.log("Image exists. ");
+      listing.forEach(function (element, index) {
+        const carouselItem = document.createElement("div");
+
+        if (index === 0) {
+          carouselItem.classList.add("carousel-item", "active");
+        } else if (index !== 0) {
+          carouselItem.classList.add("carousel-item");
+        }
+        const carouselImage = document.createElement("img");
+        carouselImage.setAttribute("src", element);
+        carouselImage.classList.add("d-block", "w-100");
+
+        carouselItem.append(carouselImage);
+        container.append(carouselItem);
+      });
+    } else {
+      console.error("Image does not exists.");
       const carouselItem = document.createElement("div");
-      
-      if (index === 0) {
-        carouselItem.classList.add("carousel-item", "active");
-      } else if (index !== 0) {
-        carouselItem.classList.add("carousel-item");
-      }
+      carouselItem.classList.add("carousel-item", "active");
+
       const carouselImage = document.createElement("img");
-      carouselImage.setAttribute("src", element);
       carouselImage.classList.add("d-block", "w-100");
-      
+      carouselImage.setAttribute(
+        "src",
+        "images/pexels-dima-valkov-3266703.jpg"
+      );
+
       carouselItem.append(carouselImage);
       container.append(carouselItem);
-    });
-  } else {
-    console.error('Image does not exists.')
-    const carouselItem = document.createElement("div");
-    carouselItem.classList.add("carousel-item", "active");
-    
-    const carouselImage = document.createElement("img");
-    carouselImage.classList.add("d-block", "w-100");
-    carouselImage.setAttribute(
-      "src",
-      "images/pexels-dima-valkov-3266703.jpg"
-    );
-    
-    carouselItem.append(carouselImage);
-    container.append(carouselItem);
-  }
-});
-  
- 
+    }
+  });
 }
 
 function listingTitle(listingData, container) {
@@ -128,8 +104,7 @@ function listingContent(listingData, container) {
   }
 
   const bidForm = document.createElement("form");
-  bidForm.className = "mt-5";
-
+  bidForm.classList.add("mt-5", "bidForm");
   const label = document.createElement("label");
   label.className = "form-label";
   label.innerText = `Your Credits: $${userInfo().userCredits}`;
@@ -141,10 +116,11 @@ function listingContent(listingData, container) {
   inputGroupText.innerText = "$";
 
   const input = document.createElement("input");
-  input.className = "form-control";
-  input.setAttribute("type", "text");
+  input.classList.add("form-control", "inputBid");
+  input.setAttribute("type", "number");
+  input.setAttribute("name", "amount");
   const button = document.createElement("button");
-  button.classList.add("btn", "btn-outline-primary");
+  button.classList.add("btn", "btn-outline-primary", "bidButton");
   button.setAttribute("type", "button");
   button.id = "button-addon2";
   button.innerText = "button";
@@ -168,7 +144,7 @@ function listingContent(listingData, container) {
   container.append(listingOwnerContent, listingContent);
 }
 
-async function displayListing() {
+export async function displayListing() {
   const listing = await listingIdAPI();
   const container = document.querySelector(".carousel-inner");
   const titleContainer = document.querySelector(".col-lg-8");
@@ -177,5 +153,3 @@ async function displayListing() {
   listingTitle(listing, titleContainer);
   listingContent(listing, contentContainer);
 }
-
-displayListing();

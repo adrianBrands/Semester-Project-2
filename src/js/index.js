@@ -8,17 +8,32 @@ import { changeAvatarImage } from "./listeners/Profile/avatar.js";
 import { userProfile } from "./profile/profile.js";
 import { userProfileImage } from "./profile/profile.js";
 
+import { bidListener } from "./listeners/Profile/credits.js";
+
+import { displayListing } from "./listings/listings_id.js";
+import { displayListings } from "./listings/listings.js";
+import { testListings } from "./profile/profileListings.js";
+
 if (location.pathname === "/index.html"){
+  console.log(true)
   signUpFormListener();
   signInFormListener();
+  displayListings();
 }
 
 if(location.pathname === "/profile.html"){
   changeAvatarImage();
   userProfile();
+  testListings();
+}
+
+if(location.pathname === "/listing.html"){
+  bidListener();
+  displayListing();
 }
 
 signOutUser();
 isLoggedIn();
-userProfileImage()
+userProfileImage();
+
 

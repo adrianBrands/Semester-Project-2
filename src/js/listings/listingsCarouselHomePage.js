@@ -6,7 +6,7 @@ export function carousel(listingData, container) {
   });
 
   for (let i = 0; i < test.length; i++) {
-    console.log(test[i]);
+    
 
     const carouselItem = document.createElement("div");
 

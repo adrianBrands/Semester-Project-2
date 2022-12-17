@@ -74,7 +74,7 @@ function allListings(listingData, parent) {
   parent.append(...listingElements);
 }
 
-async function displayListings() {
+export async function displayListings() {
   const listings = await listingsAPI();
   const container = document.querySelector(".listings");
   const carouselInner = document.querySelector(".carousel-inner");
@@ -82,4 +82,4 @@ async function displayListings() {
   carousel(listings, carouselInner);
 }
 
-displayListings();
+//displayListings()

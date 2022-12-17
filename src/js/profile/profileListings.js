@@ -7,11 +7,11 @@ function displayUserListings(listingData, container) {
   function hasListings(listing) {
     return listing.seller.name === userInfo().userName;
   }
-  //const listingElements = listing.map(displayUserListings);
+  
   const listing = listingData.map((media) => media);
-  console.log(listing)
+  
   listing.forEach(function (element, index) {
-    console.log(element)
+    
     
     if(element.seller.name === userInfo().userName){
       const col = document.createElement("div");
@@ -88,16 +88,7 @@ function displayUserListings(listingData, container) {
   })
 }
 
-/*function allListings(listingData, parent){
-  
-    
-    
-    const listingElements = listingData.map(displayUserListings);
-    parent.append(...listingElements);
-    
-    
-  
-}*/
+
     
 
   
@@ -105,7 +96,7 @@ function displayUserListings(listingData, container) {
 
 
 
-async function testListings() {
+export async function testListings() {
   const listings = await listingsAPI();
   const container = document.querySelector(".userListings");
   displayUserListings(listings, container);
@@ -114,4 +105,3 @@ async function testListings() {
   
 }
 
-testListings();
