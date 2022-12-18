@@ -37,7 +37,7 @@ export function carousel(listingData, container) {
     carouselImage.classList.add("d-block", "w-100");
 
     const carouselCaption = document.createElement("div");
-    carouselCaption.classList.add("carousel-caption", "d-none", "d-md-block");
+    carouselCaption.classList.add("carousel-caption");
 
     const carouselCaptionTitle = document.createElement("h5");
     carouselCaptionTitle.className = "fs-1";
