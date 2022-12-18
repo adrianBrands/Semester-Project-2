@@ -4,7 +4,10 @@ import { userInfo } from "../../localStorage/storage.js";
 
 const listingPath = `profiles/${userInfo().userName}/credits`;
 
-
+/**
+ * Gets users total credit
+ * @returns {number} the amount of credits the user can has
+ */
 export async function getCredits() {
   const listingsURL = `${baseURL}${listingPath}`;
 

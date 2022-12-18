@@ -3,6 +3,11 @@ import { endDate } from "./listingsEndDate.js";
 import { carousel } from "./listingsCarouselHomePage.js";
 import { searchFunction } from "../listeners/search.js";
 
+/**
+ * creates the listing cards
+ * @param {Array} listingData array of listings
+ * @returns {HTMLDivElement} div element 
+ */
 function listingsCard(listingData) {
   const col = document.createElement("div");
   col.className = "col";
@@ -36,7 +41,6 @@ function listingsCard(listingData) {
 
   const cardBody = document.createElement("div");
   cardBody.className = "card-body";
-  //cardBody.style.backgroundColor = "#911e1e";
   cardBody.style.color = "#000";
   listingsCard.append(cardBody);
 
@@ -70,11 +74,19 @@ function listingsCard(listingData) {
   return col;
 }
 
+/**
+ * appends the listing cards to its parent div element
+ * @param {Array} listingData array of listings 
+ * @param {HTMLDivElement} parent div element
+ */
 function allListings(listingData, parent) {
   const listingElements = listingData.map(listingsCard);
   parent.append(...listingElements);
 }
 
+/**
+ * displays the listing cards, the image carousel and the search functionality
+ */
 export async function displayListings() {
   const listings = await listingsAPI();
   const container = document.querySelector(".listings");

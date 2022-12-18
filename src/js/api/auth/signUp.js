@@ -1,9 +1,15 @@
 import { baseURL } from "../url.js"
+import { signInUser } from "./signIn.js";
 
 const registerPath = "auth/register";
 const method = "post";
 const errorMessage = document.querySelector(".error-message-signUp");
 
+/**
+ * registers a new user
+ * @param {object} user 
+ * 
+ */
 export async function registerUser(user){
   const registerUrl = baseURL + registerPath;
   const body = JSON.stringify(user);
@@ -17,7 +23,16 @@ export async function registerUser(user){
   })
 
   if(response.ok){
+    
     await response.json();
+     user = {
+      email: user.email,
+      password: user.password
+    }
+
+    setTimeout(() => {
+      signInUser(user);
+    }, 2000)
     
     
   } else {

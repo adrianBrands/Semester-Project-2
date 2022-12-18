@@ -6,7 +6,10 @@ const params = new URLSearchParams(queryString);
 const id = params.get("id");
 const listingPath = `listings/${id}/?_seller=true&_bids=true&_active=true`;
 
-
+/**
+ * Gets a single listing by id
+ * @returns {object} of a single listing by id
+ */
 export async function listingIdAPI() {
   const listingURLId = `${baseURL}${listingPath}`;
   

@@ -1,7 +1,9 @@
 import { registerUser } from "../../api/auth/signUp.js";
-
 import { signInUser } from "../../api/auth/signIn.js";
 
+/**
+ * signing in user with the provided formdata from the sign in form
+ */
 export function signUpFormListener() {
   const signUpForm = document.querySelector("#signUp-modal");
   
@@ -13,17 +15,13 @@ export function signUpFormListener() {
     
     registerUser(user);
     
-    const signInNewUser = {
+    /*const signInNewUser = {
       email: user.email,
       password: user.password
     }
 
     setTimeout(() => {
       signInUser(signInNewUser);
-    }, 2000);
-
-    /*setTimeout(() => {
-      window.location.reload(true);
     }, 2000);*/
 
   });

@@ -2,18 +2,26 @@ import { listingsAPI } from "../api/listings/listings.js";
 import { endDate } from "../listings/listingsEndDate.js";
 import { userInfo } from "../localStorage/storage.js";
 
-
+/**
+ * creates cards with the logged in users listings if the user has created any,
+ * if not, the user will be displayed by an alert message
+ * @param {Array} listingData array of listings
+ * @param {HTMLDivElement} container div element
+ */
 function displayUserListings(listingData, container) {
+  /**
+   * checks if the logged in user has created any listings
+   * @param {Object} listing
+   * @returns {string}
+   */
   function hasListings(listing) {
     return listing.seller.name === userInfo().userName;
   }
-  
+
   const listing = listingData.map((media) => media);
-  
-  listing.forEach(function (element, index) {
-    
-    
-    if(element.seller.name === userInfo().userName){
+
+  listing.forEach(function (element) {
+    if (element.seller.name === userInfo().userName) {
       const col = document.createElement("div");
       col.className = "col";
 
@@ -29,79 +37,73 @@ function displayUserListings(listingData, container) {
       const listingImage = document.createElement("img");
       listingImage.setAttribute("src", element.media[0]);
 
-      if(!element.media.length){
-        listingImage.setAttribute("src", "images/pexels-dima-valkov-3266703.jpg");
+      if (!element.media.length) {
+        listingImage.setAttribute(
+          "src",
+          "images/pexels-dima-valkov-3266703.jpg"
+        );
       }
-    
+
       listingImage.setAttribute("alt", "listing image");
-      listingImage.setAttribute("onerror", "this.onerror=null;this.src='/images/pexels-andrew-neel-2123337.jpg'");
+      listingImage.setAttribute(
+        "onerror",
+        "this.onerror=null;this.src='/images/pexels-andrew-neel-2123337.jpg'"
+      );
       listingImage.className = "card-img-top";
       listingImage.style.width = "100%";
       listingImage.style.height = "40vh";
-      listingImage.style.objectFit = "cover"
+      listingImage.style.objectFit = "cover";
       listingsCard.append(listingImage);
-    
 
-      //listingsCard.append(listingImage);
-    
       const cardBody = document.createElement("div");
       cardBody.className = "card-body";
-      //cardBody.style.backgroundColor = "#911e1e";
-      cardBody.style.color = "#000"
+
+      cardBody.style.color = "#000";
       listingsCard.append(cardBody);
-    
+
       const cardBodyTitle = document.createElement("h5");
       cardBodyTitle.className = "card-title";
       cardBodyTitle.innerText = element.title;
-    
+
       const cardBodyText = document.createElement("p");
       cardBodyText.className = "card-text";
       cardBodyText.innerText = element.description;
       cardBody.append(cardBodyTitle, cardBodyText);
-    
+
       const cardBodyDiv = document.createElement("div");
-      cardBodyDiv.classList.add("d-flex", "flex-wrap", "justify-content-between");
+      cardBodyDiv.classList.add(
+        "d-flex",
+        "flex-wrap",
+        "justify-content-between"
+      );
       cardBody.append(cardBodyDiv);
-    
+
       const cardBodyDivContent = document.createElement("p");
       cardBodyDivContent.className = "fw-bold";
       cardBodyDivContent.innerText = `bids: ${element._count.bids}`;
       cardBodyDiv.append(cardBodyDivContent);
-    
-    
+
       const cardFooter = document.createElement("div");
       cardFooter.className = "card-footer";
       listingsCard.appendChild(cardFooter);
-    
 
-
-    
       const cardFooterContent = document.createElement("small");
-      cardFooterContent.className = "text-muted"; 
-      cardFooterContent.innerText = "Ends at " +  endDate(element) ;
+      cardFooterContent.className = "text-muted";
+      cardFooterContent.innerText = "Ends at " + endDate(element);
       cardFooter.append(cardFooterContent);
-      container.append(col)
-    } else if(!listingData.find(hasListings)){
-      const alert = document.querySelector(".alert-warning")
+      container.append(col);
+    } else if (!listingData.find(hasListings)) {
+      const alert = document.querySelector(".alert-warning");
       alert.style.display = "block";
     }
-  })
+  });
 }
 
-
-    
-
-  
-  
-
-
-
+/**
+ * displays the logged in users listings
+ */
 export async function testListings() {
   const listings = await listingsAPI();
   const container = document.querySelector(".userListings");
   displayUserListings(listings, container);
-  
-
-  
 }
-

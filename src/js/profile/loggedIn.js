@@ -3,6 +3,9 @@ const signInButton = document.getElementById("signInButton");
 const signUpButton = document.getElementById("signUpButton");
 const path = location.pathname;
 
+/**
+ * checks if the user is logged
+ */
 export function isLoggedIn() {
   const key = localStorage.getItem("token");
   if (!key) {

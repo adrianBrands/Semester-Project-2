@@ -5,6 +5,10 @@ import { credits } from "../../profile/credits.js";
 
 const method = "post";
 
+/**
+ * bids on a listing and gives alert messages if the response fails
+ * @param {object} creditData 
+ */
 export async function bidOnListing(creditData) {
   const listing = await listingIdAPI();
   const id = listing.id;

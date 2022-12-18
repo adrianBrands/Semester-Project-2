@@ -1,5 +1,8 @@
 import { bidOnListing } from "../../api/listings/bid.js";
 
+/**
+ * bids on a listing 
+ */
 export function bidListener() {
   setTimeout(() => {
     const bidButton = document.querySelector(".bidButton");
@@ -13,7 +16,6 @@ export function bidListener() {
       const key = localStorage.getItem("token");
       if(key){
         bidOnListing(credit);
-        console.log(key)
       } else {
         console.log("not logged in")
         document.querySelector(".inputBid").value = "";

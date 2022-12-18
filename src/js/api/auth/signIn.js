@@ -5,6 +5,10 @@ const signInPath = "auth/login";
 const method = "post";
 const errorMessage = document.querySelector(".error-message-signIn")
 
+/**
+ * signing in user
+ * @param {object} user 
+ */
 export async function signInUser(user){
   const signInUrl = baseURL + signInPath;
   const body = JSON.stringify(user);

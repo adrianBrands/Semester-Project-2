@@ -1,5 +1,8 @@
 import { updateAvatar } from "../../api/profile/updateAvatar.js";
 
+/**
+ * updates avatar image
+ */
 export function changeAvatarImage() {
   const avatarForm = document.querySelector("#avatar-image");
   

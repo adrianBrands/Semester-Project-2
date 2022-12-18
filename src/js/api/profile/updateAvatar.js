@@ -8,6 +8,10 @@ const userName = userInfo();
 const avatarPath = `profiles/${userName.userName}/media`;
 const method = "put";
 
+/**
+ * updates the avatar image 
+ * @param {string} url string with the avatar image 
+ */
 export async function updateAvatar(avatar){
   const updateAvatarURL = `${baseURL}${avatarPath}`;
   

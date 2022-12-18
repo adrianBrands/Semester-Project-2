@@ -4,12 +4,17 @@ import { endDate } from "./listingsEndDate.js";
 import { sortFromHighestBid } from "./listingsBidsSort.js";
 import { checkIfImageExists } from "./listingsImageCheck.js";
 
+/**
+ * displays the listing image url if provided in the listing object from the listingsData array. 
+ * provides a replacement image if it fails to get a image url
+ * @param {Object} listingData object of a single listing by id
+ * @param {HTMLDivElement} container div element
+ */
 function listingImage(listingData, container) {
   const listing = listingData.media.map((media) => media);
 
   checkIfImageExists(listing[0], (exists) => {
     if (exists) {
-      console.log("Image exists. ");
       listing.forEach(function (element, index) {
         const carouselItem = document.createElement("div");
 
@@ -26,7 +31,6 @@ function listingImage(listingData, container) {
         container.append(carouselItem);
       });
     } else {
-      console.error("Image does not exists.");
       const carouselItem = document.createElement("div");
       carouselItem.classList.add("carousel-item", "active");
 
@@ -43,12 +47,22 @@ function listingImage(listingData, container) {
   });
 }
 
+/**
+ * creates a h1 element and displays the title from the object
+ * @param {Object} object of a single listing by id
+ * @param {HTMLDivElement} container div element
+ */
 function listingTitle(listingData, container) {
   const title = document.createElement("h1");
   title.innerText = listingData.title;
   container.prepend(title);
 }
 
+/**
+ * creates the HTML elements content from the object
+ * @param {Object} object of a single listing by id 
+ * @param {HTMLDivElement} container div element 
+ */
 function listingContent(listingData, container) {
   const listingOwnerContent = document.createElement("div");
   listingOwnerContent.classList.add(
@@ -114,7 +128,6 @@ function listingContent(listingData, container) {
     
   }
   
-
   const inputGroup = document.createElement("div");
   inputGroup.className = "input-group";
   const inputGroupText = document.createElement("span");
@@ -151,6 +164,9 @@ function listingContent(listingData, container) {
   container.append(listingOwnerContent, listingContent);
 }
 
+/**
+ * displays the listing HTML elements
+ */
 export async function displayListing() {
   const listing = await listingIdAPI();
   const container = document.querySelector(".carousel-inner");

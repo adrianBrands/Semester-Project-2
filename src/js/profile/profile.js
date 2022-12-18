@@ -1,5 +1,8 @@
 import { userInfo } from "../localStorage/storage.js"
 
+/**
+ * Creates user profile html elements with the stored user data in local storage
+ */
 export function userProfile() {
   const userDiv = document.querySelector(".userInfo");
 

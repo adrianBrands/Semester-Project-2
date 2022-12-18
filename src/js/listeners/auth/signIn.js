@@ -1,5 +1,8 @@
 import { signInUser } from "../../api/auth/signIn.js";
 
+/**
+ * signing in user with the provided formdata from the sign in form
+ */
 export function signInFormListener() {
   const signInForm = document.querySelector("#signIn-modal");
   

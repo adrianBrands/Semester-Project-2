@@ -1,3 +1,8 @@
+/**
+ * creates a carousel of 10 images with each image representing one of the 10 latest listings
+ * @param {Array} listingData array of listings
+ * @param {HTMLDivElement} container div element
+ */
 export function carousel(listingData, container) {
   const tenLatestListings = listingData.slice(0, 10);
 
@@ -6,8 +11,6 @@ export function carousel(listingData, container) {
   });
 
   for (let i = 0; i < test.length; i++) {
-    
-
     const carouselItem = document.createElement("div");
 
     if (i === 0) {
@@ -62,11 +65,7 @@ export function carousel(listingData, container) {
     carouselButton.setAttribute("href", `listing.html?id=${test[i].id}`);
     carouselButton.innerText = "Make a bid";
 
-    carouselCaption.append(
-      carouselCaptionTitle,
-      carouselBids,
-      carouselButton
-    );
+    carouselCaption.append(carouselCaptionTitle, carouselBids, carouselButton);
 
     carouselItem.append(carouselImage, carouselCaption);
 

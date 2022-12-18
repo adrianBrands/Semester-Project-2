@@ -3,7 +3,10 @@ import { fetchWithToken } from "../token/fetchWithToken.js";
 
 const listingPath = `listings/?_seller=true&_bids=true&_active=true&sort=created&sortOrder=desc`;
 
-
+/**
+ * gets all active listings 
+ * @returns {Array} array with listing objects
+ */
 export async function listingsAPI() {
   const listingsURL = `${baseURL}${listingPath}`;
 
