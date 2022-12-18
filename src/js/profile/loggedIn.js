@@ -8,16 +8,17 @@ export function isLoggedIn() {
   if (!key) {
     profileDropDown.style.display = "none";
     //window.location.replace("/index.html");
-    
   }
-  if (path !== "/index.html" && !key) {
+  if (path !== "/index.html" && !key && path !== "/listing.html") {
     window.location.replace("/index.html");
   }
   if (key) {
     signInButton.style.display = "none";
     signUpButton.style.display = "none";
     profileDropDown.style.display = "block";
-  } else {
-    return false;
+  }
+  if (key && path === "/listing.html") {
+    const alert = document.querySelector(".alert");
+    alert.style.display = "none";
   }
 }

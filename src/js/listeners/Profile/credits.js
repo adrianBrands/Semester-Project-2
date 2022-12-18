@@ -1,5 +1,4 @@
 import { bidOnListing } from "../../api/listings/bid.js";
-import { credits } from "../../profile/credits.js";
 
 export function bidListener() {
   setTimeout(() => {
@@ -11,18 +10,20 @@ export function bidListener() {
       const credit = {
         amount: Number(bidInput.value),
       };
+      const key = localStorage.getItem("token");
+      if(key){
+        bidOnListing(credit);
+        console.log(key)
+      } else {
+        console.log("not logged in")
+        document.querySelector(".inputBid").value = "";
+        const warning = document.querySelector(".endDateWarning");
+        warning.innerHTML = `You need to be logged in to bid on this item`;
+        warning.style.color = "red";
+       
+      }
 
-      bidOnListing(credit);
-
-      setTimeout(() => {
-        credits()
-      }, 2000);
-
-      setTimeout(() => {
-        window.location.reload(true);
-      }, 3000);
+      
     });
   }, 2000);
 }
-
-

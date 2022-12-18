@@ -1,9 +1,7 @@
 import { baseURL } from "../url.js";
 import { fetchWithToken } from "../token/fetchWithToken.js";
 import { listingIdAPI } from "./listing_id.js";
-
-
-
+import { credits } from "../../profile/credits.js";
 
 const method = "post";
 
@@ -19,10 +17,24 @@ export async function bidOnListing(creditData) {
   });
 
   if (response.ok) {
-    const result = response.json();
-    return result;
+    const result = Promise.resolve(response.json());
+    result.then((value) => {
+      console.log(value);
+      setTimeout(() => {
+        credits();
+      }, 2000);
+
+      setTimeout(() => {
+        window.location.reload(true);
+      }, 2500);
+    });
   } else {
-    const result = response.json();
-    console.log(result.error);
+    const result = Promise.resolve(response.json());
+    result.then((value) => {
+      document.querySelector(".inputBid").value = "";
+      const warning = document.querySelector(".endDateWarning");
+      warning.innerHTML = value.errors[0].message;
+      warning.style.color = "red";
+    });
   }
 }

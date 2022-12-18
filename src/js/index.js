@@ -13,6 +13,7 @@ import { bidListener } from "./listeners/Profile/credits.js";
 import { displayListing } from "./listings/listings_id.js";
 import { displayListings } from "./listings/listings.js";
 import { testListings } from "./profile/profileListings.js";
+import { createFormListener } from "./listings/create.js";
 
 if (location.pathname === "/index.html"){
   console.log(true)
@@ -25,6 +26,7 @@ if(location.pathname === "/profile.html"){
   changeAvatarImage();
   userProfile();
   testListings();
+  createFormListener();
 }
 
 if(location.pathname === "/listing.html"){

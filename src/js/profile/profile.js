@@ -33,8 +33,8 @@ export function userProfileImage(){
   userImage.setAttribute("src", userInfo().userAvatar);
   userImage.className = "rounded-circle";
   userImage.setAttribute("alt", "picture of the users profile image");
-  userImage.setAttribute("width", 40);
-  userImage.setAttribute("height", 40);
+  userImage.setAttribute("width", 55);
+  userImage.setAttribute("height", 55);
 
   userImageContainer.append(userImage);
 }

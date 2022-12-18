@@ -106,8 +106,14 @@ function listingContent(listingData, container) {
   const bidForm = document.createElement("form");
   bidForm.classList.add("mt-5", "bidForm");
   const label = document.createElement("label");
-  label.className = "form-label";
-  label.innerText = `Your Credits: $${userInfo().userCredits}`;
+  const key = localStorage.getItem("token");
+  if(key){
+    label.classList.add("form-label", "yourCredits");
+    label.innerText = `Your Credits: $${userInfo().userCredits}`;
+  } else if (!key){
+    
+  }
+  
 
   const inputGroup = document.createElement("div");
   inputGroup.className = "input-group";
@@ -126,6 +132,7 @@ function listingContent(listingData, container) {
   button.innerText = "button";
 
   const date = document.createElement("p");
+  date.className = "endDateWarning";
   date.innerText = `Ends at ${endDate(listingData)}`;
   date.classList.add("mt-2", "border-bottom");
 

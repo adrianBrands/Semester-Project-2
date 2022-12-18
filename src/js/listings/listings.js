@@ -1,8 +1,9 @@
 import { listingsAPI } from "../api/listings/listings.js";
 import { endDate } from "./listingsEndDate.js";
 import { carousel } from "./listingsCarouselHomePage.js";
+import { searchFunction } from "../listeners/search.js";
 
-function listings(listingData) {
+function listingsCard(listingData) {
   const col = document.createElement("div");
   col.className = "col";
 
@@ -70,7 +71,7 @@ function listings(listingData) {
 }
 
 function allListings(listingData, parent) {
-  const listingElements = listingData.map(listings);
+  const listingElements = listingData.map(listingsCard);
   parent.append(...listingElements);
 }
 
@@ -80,6 +81,9 @@ export async function displayListings() {
   const carouselInner = document.querySelector(".carousel-inner");
   allListings(listings, container);
   carousel(listings, carouselInner);
+  searchFunction(listings, container, listingsCard)
 }
 
-//displayListings()
+
+
+
