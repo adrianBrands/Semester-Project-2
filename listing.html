@@ -45,14 +45,72 @@
                 <li><a class="dropdown-item" id="sign-out" href="#">Sign out</a></li>
               </ul>
             </div>
-            <button type="button" class="btn btn-outline-dark me-2" id="signInButton" data-bs-toggle="modal" data-bs-target="#login-modal">Login</button>
-            <button type="button" class="btn btn-outline-dark me-5" id="signUpButton"  data-bs-toggle="modal" data-bs-target="#signUp-modal">Sign Up</button>
+            <button type="button" class="btn btn-outline-dark me-2" id="signInButton" data-bs-toggle="modal" data-bs-target="#signIn-modal">sign In</button>
+            <button type="button" class="btn btn-outline-dark me-5" id="signUpButton" data-bs-toggle="modal" data-bs-target="#signUp-modal">Sign Up</button>
           </div>
         </div>
       </div>
     </nav>
   </header>
   <main>
+    <div class="modal fade" id="signIn-modal" tabindex="-1" aria-labelledby="signIn-modal-label" aria-hidden="true">
+      <div class="modal-dialog">
+        <form class="modal-content" id="signIn-form">
+          <div class="modal-header d-flex">
+            <h1 class="modal-title fs-3" id="signIn-modal">Welcome back</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <h2 class="fs-5">Let the bidding begin!</h2>
+            <p class="error-message-signIn text-danger"></p>
+            <div class="form-floating mb-3">
+              <input required pattern="^[\w\-.]+@(stud.)?noroff.no$" type="email" title="must not contain punctuation symbols apart from underscore (_)" class="form-control" id="signInEmail" name="email" placeholder="name@example.com"/>
+              <label for="signInEmail">Email address</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input required minlength="8" type="password" class="form-control" id="signInPassword" name="password" placeholder="password"/>
+              <label for="signInPassword">password</label>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="w-100 mb-2 btn btn-lg rounded-3 btn-outline-dark" type="submit">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="modal fade" id="signUp-modal" tabindex="-1" aria-labelledby="signUp-modal-label" aria-hidden="true">
+      <div class="modal-dialog">
+        <form class="modal-content" id="signUp-form">
+          <div class="modal-header">
+            <h1 class="modal-title fs-3" id="signUp-modal-label">Welcome</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <h2 class="fs-5">Create account and start your bidding journey</h2>
+            <p class="error-message-signUp text-danger"></p>
+            <div class="form-floating mb-3">
+              <input required pattern="^[\w]+$" type="text" title="must not contain punctuation symbols apart from underscore (_)" class="form-control" id="signUp-name" name="name" placeholder="username"/>
+              <label for="signUpUserName">Username</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input required pattern="^[\w\-.]+@(stud.)?noroff.no$" type="email" title="A user with a stud.noroff.no email may and noroff.no can register" class="form-control" id="signUp-email" name="email" placeholder="name@noroff.no"/>
+              <label for="signUpEmail">Email address</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input required minlength="8" type="password" class="form-control" id="signUp-password" name="password" placeholder="password"/>
+              <label for="signUpPassword">Password</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input required type="url" class="form-control" id="signUp-avatar" name="avatar" placeholder="profile image URL"/>
+              <label for="SignUpAvatar">Profile image URL</label>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Sign Up</button>
+          </div>
+        </form>
+      </div>
+    </div>
     <div class="container mt-3">
       <div class="alert alert-warning"><i class="bi bi-exclamation-triangle"></i> Sign in or create an account to bid on this item</div>
     </div>

@@ -27,6 +27,8 @@ if (location.pathname === "/profile.html") {
 if (location.pathname === "/listing.html") {
   bidListener();
   displayListing();
+  signUpFormListener();
+  signInFormListener();
 }
 
 signOutUser();
