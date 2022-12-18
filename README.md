@@ -21,6 +21,7 @@ An auction website, where logged in users can bid on items, as well as create th
 
 ## Project links 
 
+### Live site
 - https://resilient-elf-b6a418.netlify.app/index.html
 
 
