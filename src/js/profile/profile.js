@@ -19,14 +19,9 @@ export function userProfile() {
   userName.innerText = `${userInfo().userName}`;
   userDiv.appendChild(userName);
 
-  const currentListings = document.createElement("h2");
-  currentListings.classList = "fs-5 mt-3";
-  currentListings.innerText = `Current listings: ...`;
-  userDiv.appendChild(currentListings);
-
   const userCredits = document.createElement("h3");
-  userCredits.classList = "fs-5 mt-3";
-  userCredits.innerText = `Credits: ${userInfo().userCredits}`;
+  userCredits.classList = "fs-5 mt-4";
+  userCredits.innerText = `Credits: $${userInfo().userCredits}`;
   userDiv.appendChild(userCredits);
 }
 

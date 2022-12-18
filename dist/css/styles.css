@@ -10804,4 +10804,17 @@ textarea.form-control-lg {
   height: 100vh;
 }
 
+.latestListings {
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 600px) {
+  .latestListings {
+    justify-content: center;
+  }
+  .searchListings {
+    margin-bottom: 5px;
+  }
+}
+
 /*# sourceMappingURL=styles.css.map */
