@@ -7,7 +7,7 @@ const method = "post";
 
 /**
  * bids on a listing and gives alert messages if the response fails
- * @param {object} creditData 
+ * @param {object} creditData
  */
 export async function bidOnListing(creditData) {
   const listing = await listingIdAPI();
@@ -23,7 +23,6 @@ export async function bidOnListing(creditData) {
   if (response.ok) {
     const result = Promise.resolve(response.json());
     result.then((value) => {
-      console.log(value);
       setTimeout(() => {
         credits();
       }, 2000);

@@ -1,4 +1,3 @@
-
 /**
  * creates end date 
  * @param {Object} listingData object of a single listing by id

@@ -1,7 +1,7 @@
 import { bidOnListing } from "../../api/listings/bid.js";
 
 /**
- * bids on a listing 
+ * bids on a listing
  */
 export function bidListener() {
   setTimeout(() => {
@@ -14,18 +14,15 @@ export function bidListener() {
         amount: Number(bidInput.value),
       };
       const key = localStorage.getItem("token");
-      if(key){
+      
+      if (key) {
         bidOnListing(credit);
       } else {
-        console.log("not logged in")
         document.querySelector(".inputBid").value = "";
         const warning = document.querySelector(".endDateWarning");
         warning.innerHTML = `You need to be logged in to bid on this item`;
         warning.style.color = "red";
-       
       }
-
-      
     });
   }, 2000);
 }

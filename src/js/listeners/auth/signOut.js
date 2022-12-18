@@ -9,7 +9,6 @@ export function signOutUser () {
   signOutButton.addEventListener("click", (event) => {
     event.preventDefault();
     signOut();
-    //location.replace("/index.html");
     window.location.replace("/index.html");
   });
 }

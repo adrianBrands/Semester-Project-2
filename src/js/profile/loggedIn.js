@@ -10,7 +10,6 @@ export function isLoggedIn() {
   const key = localStorage.getItem("token");
   if (!key) {
     profileDropDown.style.display = "none";
-    //window.location.replace("/index.html");
   }
   if (path !== "/index.html" && !key && path !== "/listing.html") {
     window.location.replace("/index.html");

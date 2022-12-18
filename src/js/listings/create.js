@@ -1,7 +1,7 @@
 import { postListing } from "../api/listings/create.js";
 
 /**
- * Creates a listing with a submit event targeting the create listing form 
+ * Creates a listing with a submit event targeting the create listing form
  */
 export function createFormListener() {
   const form = document.querySelector("#create-listing");
@@ -19,11 +19,8 @@ export function createFormListener() {
       const endsAt = formData.get("endsAt");
 
       const listing = { title, description, tags, media, endsAt };
-      console.log(listing);
 
       postListing(listing);
-
-      
     });
   }
 }

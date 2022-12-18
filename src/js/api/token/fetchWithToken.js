@@ -7,7 +7,6 @@ export function headers() {
   };
 }
 
-
 export async function fetchWithToken(url, options) {
   return fetch(url, {
     ...options,

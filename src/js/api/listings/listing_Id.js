@@ -12,15 +12,13 @@ const listingPath = `listings/${id}/?_seller=true&_bids=true&_active=true`;
  */
 export async function listingIdAPI() {
   const listingURLId = `${baseURL}${listingPath}`;
-  
+
   const response = await fetchWithToken(listingURLId);
-  
-  if(response.ok){
-   const result = response.json();
-   return result
-    
+
+  if (response.ok) {
+    const result = response.json();
+    return result;
   } else {
-    console.log(response)
+    console.log(response);
   }
 }
-

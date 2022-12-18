@@ -6,7 +6,7 @@ const method = "post";
 
 /**
  * creates new listing and reloads the page if the response is ok
- * @param {object} listingData 
+ * @param {object} listingData
  */
 export async function postListing(listingData) {
   const createListingURL = baseURL + path;
@@ -24,6 +24,6 @@ export async function postListing(listingData) {
     }, 1500);
   } else {
     const result = response.json();
-    console.log(result.error);//make a warning message here
+    return result.error
   }
 }
