@@ -8,7 +8,7 @@ An auction website, where logged-in users can bid on items, as well as create th
 
 ## Built With
 
-- [JS]
+- JS
 - [Bootstrap](https://getbootstrap.com)
 - [Sass](https://sass-lang.com/)
 
